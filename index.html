@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gaming Grid</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#0e2420}
+html{scroll-behavior:smooth}
+a{text-decoration:none}
+button{font-family:inherit}
+@keyframes gg-pop{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes gg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes gg-blink{0%,100%{opacity:1}50%{opacity:.35}}
+.gg-pop{animation:gg-pop .8s cubic-bezier(.2,.8,.2,1) both}
+.gg-d1{animation-delay:.1s}
+.gg-d2{animation-delay:.22s}
+.gg-d3{animation-delay:.36s}
+@supports (animation-timeline: view()){
+.gg-reveal{animation:gg-pop linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+}
+.gg-marquee{animation:gg-marquee 34s linear infinite}
+.gg-blink{animation:gg-blink 1.6s ease-in-out infinite}
+.gg-l{color:#f4f1e8;transition:color .2s}
+.gg-l:hover{color:#ffb938}
+.gg-btn{transition:transform .2s,box-shadow .2s,background-color .2s,color .2s}
+.gg-btn:hover{transform:translateY(-3px);box-shadow:0 8px 0 rgba(0,0,0,0.35)}
+.gg-ghost:hover{background-color:rgba(244,241,232,0.1);box-shadow:none}
+.gg-card{transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .28s,box-shadow .28s}
+.gg-card:hover{transform:translateY(-5px);border-color:#ffb938}
+.gg-slot{transition:transform .25s cubic-bezier(.2,.8,.2,1),background-color .25s,border-color .25s}
+.gg-slot:hover{transform:translateY(-6px) rotate(-1deg);border-color:#ffb938;background-color:#1d423a}
+.gg-acc{transition:background-color .2s,border-color .2s;cursor:pointer}
+.gg-acc:hover{border-color:#ffb938}
+.gg-links{display:flex}
+@media (max-width: 700px){
+.gg-links{display:none}
+.gg-sec{padding-top:64px!important;padding-bottom:64px!important}
+.gg-hero{padding-top:32px!important;padding-bottom:48px!important}
+.gg-pad{padding:24px!important}
+.gg-price{font-size:56px!important}
+}
+@media (prefers-reduced-motion: reduce){
+.gg-pop,.gg-reveal,.gg-marquee,.gg-blink{animation:none}
+.gg-btn,.gg-card,.gg-slot,.gg-acc{transition:none}
+html{scroll-behavior:auto}
+}
+</style>
+</helmet>
+
+<div style="background: #0e2420; color: #f4f1e8; font-family: 'Manrope', system-ui, sans-serif; min-height: 100%; overflow-x: clip">
+
+<!-- TOP BAR -->
+<div style="max-width: 1160px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; color: #f4f1e8; min-width: 0">
+<div style="width: 28px; height: 28px; flex: none; border-radius: 8px; background: #ffb938; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; padding: 5px; box-sizing: border-box">
+<div style="background: #0e2420; border-radius: 2px"></div><div style="background: #0e2420; border-radius: 2px"></div><div style="background: #0e2420; border-radius: 2px"></div><div style="background: #0e2420; border-radius: 2px"></div>
+</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 16px; white-space: nowrap">Gaming Grid</div>
+</a>
+<div style="display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 600">
+<div class="gg-links" style="align-items: center; gap: 28px">
+<a class="gg-l" href="#play">Play</a>
+<a class="gg-l" href="#culture">Culture</a>
+<a class="gg-l" href="#future">Future</a>
+<a class="gg-l" href="#visit">Visit</a>
+</div>
+<a class="gg-btn" href="mailto:srijon316@gmail.com?subject=Book%20a%20slot%20at%20Gaming%20Grid&amp;body=Hi%20Gaming%20Grid%2C%0A%0AI%27d%20like%20to%20book%20a%20slot.%0A%0AName%3A%20%0ADate%3A%20%0ATime%3A%20%0ASession%3A%201%20Player%20(%E2%82%B9100%2Fhr)%20or%202%20Players%20(%E2%82%B9180%2Fhr)%0AHours%3A%20%0A%0AThanks!" style="background: #ffb938; color: #1a1204; padding: 11px 18px; border-radius: 12px; font-weight: 700; white-space: nowrap">Book a slot</a>
+</div>
+</div>
+
+<!-- HERO -->
+<div id="top" class="gg-hero" style="max-width: 1160px; margin: 0 auto; padding: 64px 20px 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1.25 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 26px; align-items: flex-start">
+<div class="gg-pop" style="font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ffb938">Hojai, Assam · PS4 gaming cafe</div>
+<h1 class="gg-pop gg-d1" style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: clamp(30px, 5.6vw, 66px); line-height: 1.08; letter-spacing: -0.02em">Games are better with someone <span style="color: #ffb938">next to you.</span></h1>
+<p class="gg-pop gg-d2" style="margin: 0; font-size: 18px; line-height: 1.65; color: #b8cbc2; max-width: 520px">Three PS4 stations, cold drinks and nowhere else to be. Pick a game, grab a controller, and hand someone the second one.</p>
+<div class="gg-pop gg-d3" style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="gg-btn" href="mailto:srijon316@gmail.com?subject=Book%20a%20slot%20at%20Gaming%20Grid&amp;body=Hi%20Gaming%20Grid%2C%0A%0AI%27d%20like%20to%20book%20a%20slot.%0A%0AName%3A%20%0ADate%3A%20%0ATime%3A%20%0ASession%3A%201%20Player%20(%E2%82%B9100%2Fhr)%20or%202%20Players%20(%E2%82%B9180%2Fhr)%0AHours%3A%20%0A%0AThanks!" style="background: #ffb938; color: #1a1204; font-weight: 700; font-size: 16px; padding: 16px 26px; border-radius: 14px">Book your slot</a>
+<a class="gg-btn gg-ghost" href="#play" style="border: 2px solid rgba(244,241,232,0.35); color: #f4f1e8; font-weight: 700; font-size: 16px; padding: 14px 24px; border-radius: 14px">See prices</a>
+<a class="gg-btn gg-ghost" href="#culture" style="border: 2px solid rgba(244,241,232,0.35); color: #f4f1e8; font-weight: 700; font-size: 16px; padding: 14px 24px; border-radius: 14px">Why we play</a>
+</div>
+</div>
+
+<div class="gg-pop gg-d2" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="box-sizing: border-box; padding: 22px 24px; border-radius: 20px; background: #ffb938; color: #1a1204; display: flex; align-items: center; gap: 18px">
+<div style="width: 52px; height: 52px; flex: none; border-radius: 50%; background: #1a1204; display: grid; place-items: center">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="#ffb938" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.8 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"></path></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<div class="gg-blink" style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Achievement unlocked</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.2">First gaming cafe in Hojai, Assam</div>
+</div>
+</div>
+<div style="box-sizing: border-box; padding: 8px 24px; border-radius: 20px; background: #143029; border: 1px solid rgba(244,241,232,0.12)">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(244,241,232,0.1)"><div style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 16px">PS4 · 01</div><div style="font-size: 13px; font-weight: 700; color: #ffb938">● READY</div></div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(244,241,232,0.1)"><div style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 16px">PS4 · 02</div><div style="font-size: 13px; font-weight: 700; color: #ffb938">● READY</div></div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0"><div style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 16px">PS4 · 03</div><div style="font-size: 13px; font-weight: 700; color: #ffb938">● READY</div></div>
+</div>
+</div>
+</div>
+
+<!-- STATS -->
+<div class="gg-reveal" style="max-width: 1160px; margin: 0 auto; padding: 0 20px 64px">
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<div style="flex: 1 1 200px; box-sizing: border-box; padding: 24px 26px; border-radius: 18px; background: #143029; border: 1px solid rgba(244,241,232,0.12); display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #ffb938">3</div>
+<div style="font-size: 15px; color: #b8cbc2">PS4 stations</div>
+</div>
+<div style="flex: 1 1 200px; box-sizing: border-box; padding: 24px 26px; border-radius: 18px; background: #143029; border: 1px solid rgba(244,241,232,0.12); display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #ffb938">₹100</div>
+<div style="font-size: 15px; color: #b8cbc2">for an hour, solo</div>
+</div>
+<div style="flex: 1 1 200px; box-sizing: border-box; padding: 24px 26px; border-radius: 18px; background: #143029; border: 1px solid rgba(244,241,232,0.12); display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #ffb938">10–10</div>
+<div style="font-size: 15px; color: #b8cbc2">open, 10 AM to 10 PM</div>
+</div>
+</div>
+</div>
+
+<!-- TICKER -->
+<div style="overflow: hidden; border-top: 1px solid rgba(244,241,232,0.14); border-bottom: 1px solid rgba(244,241,232,0.14); padding: 18px 0">
+<div class="gg-marquee" style="display: flex; width: max-content; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 20px; white-space: nowrap; color: #f4f1e8">
+<div style="display: flex; align-items: center; gap: 30px; padding-right: 30px">
+<span>Co-op</span><span style="color: #ffb938">✦</span>
+<span>Versus</span><span style="color: #ffb938">✦</span>
+<span>Clutch moments</span><span style="color: #ffb938">✦</span>
+<span>Late nights</span><span style="color: #ffb938">✦</span>
+<span>Rematches</span><span style="color: #ffb938">✦</span>
+<span>Good company</span><span style="color: #ffb938">✦</span>
+</div>
+<div style="display: flex; align-items: center; gap: 30px; padding-right: 30px">
+<span>Co-op</span><span style="color: #ffb938">✦</span>
+<span>Versus</span><span style="color: #ffb938">✦</span>
+<span>Clutch moments</span><span style="color: #ffb938">✦</span>
+<span>Late nights</span><span style="color: #ffb938">✦</span>
+<span>Rematches</span><span style="color: #ffb938">✦</span>
+<span>Good company</span><span style="color: #ffb938">✦</span>
+</div>
+</div>
+</div>
+
+<!-- LEVEL 1: PLAY -->
+<div id="play" class="gg-sec" style="max-width: 1160px; margin: 0 auto; padding: 96px 20px; display: flex; flex-direction: column; gap: 44px">
+<div class="gg-reveal" style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ffb938">Level 01 · Play</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: clamp(28px, 4.6vw, 52px); line-height: 1.1; letter-spacing: -0.02em">Pick your session</h2>
+</div>
+
+<div class="gg-reveal" style="display: flex; flex-direction: column; gap: 14px">
+<div class="gg-card gg-pad" style="box-sizing: border-box; padding: 32px 36px; border-radius: 24px; background: #143029; border: 2px solid rgba(244,241,232,0.14); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 26px">1 Player</div>
+<div style="font-size: 16px; color: #b8cbc2">1 controller · 1 hour</div>
+</div>
+<div class="gg-price" style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 72px; line-height: 1; letter-spacing: -0.03em">₹100</div>
+</div>
+<div class="gg-card gg-pad" style="box-sizing: border-box; padding: 32px 36px; border-radius: 24px; background: #ffb938; color: #1a1204; border: 2px solid #ffb938; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 26px">2 Players</div>
+<div style="font-size: 16px; opacity: 0.8">2 controllers · 1 hour</div>
+</div>
+<div class="gg-price" style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 72px; line-height: 1; letter-spacing: -0.03em">₹180</div>
+</div>
+</div>
+
+<div class="gg-reveal" style="display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b8cbc2">Drinks &amp; snacks</div>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<div class="gg-slot" style="flex: 1 1 240px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 18px; background: #143029; border: 2px solid rgba(244,241,232,0.14); display: flex; flex-direction: column; gap: 22px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 20px">Monster</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 34px; color: #ffb938">₹130</div>
+</div>
+<div class="gg-slot" style="flex: 1 1 240px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 18px; background: #143029; border: 2px solid rgba(244,241,232,0.14); display: flex; flex-direction: column; gap: 22px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 20px">Red Bull</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 34px; color: #ffb938">₹130</div>
+</div>
+<div class="gg-slot" style="flex: 1 1 240px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 18px; background: #143029; border: 2px solid rgba(244,241,232,0.14); display: flex; flex-direction: column; gap: 22px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 20px">Diet Coke</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 34px; color: #ffb938">₹70</div>
+</div>
+<div class="gg-slot" style="flex: 1 1 240px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 18px; background: #143029; border: 2px solid rgba(244,241,232,0.14); display: flex; flex-direction: column; gap: 22px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 20px">Lays</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 34px; color: #ffb938">₹20</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- LEVEL 2: CULTURE (light band) -->
+<div id="culture" style="background: #f4f1e8; color: #10241f">
+<div class="gg-sec" style="max-width: 1160px; margin: 0 auto; padding: 96px 20px; display: flex; flex-direction: column; gap: 56px">
+<div class="gg-reveal" style="display: flex; flex-direction: column; gap: 22px; max-width: 880px">
+<div style="font-size: 14px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #8a5a00">Level 02 · Culture</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: clamp(28px, 4.8vw, 56px); line-height: 1.1; letter-spacing: -0.02em">Gaming was always a team sport.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.7; color: #36504a">Before everyone had a headset and a username, games lived in shared spaces: arcades, living rooms, the one friend's house that had the console. You played with whoever was in the room, you talked the whole time, and you remembered who won for years.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.7; color: #36504a">Somewhere along the way a lot of play moved online and into separate rooms. A gaming cafe puts it back where it started: one screen, a couple of controllers, and people who care about the result a little too much.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 18px">
+<div class="gg-card gg-reveal gg-pad" style="flex: 1 1 280px; min-width: 0; box-sizing: border-box; padding: 30px; border-radius: 22px; background: #ffffff; border: 2px solid #10241f; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 16px; color: #8a5a00">01</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.15">Couch co-op</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #36504a">Same screen, same seat, zero lag. The trash talk is live, the reactions are real, and nobody can pretend they didn't see that goal.</p>
+</div>
+<div class="gg-card gg-reveal gg-pad" style="flex: 1 1 280px; min-width: 0; box-sizing: border-box; padding: 30px; border-radius: 22px; background: #ffffff; border: 2px solid #10241f; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 16px; color: #8a5a00">02</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.15">Rivalries and rematches</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #36504a">Every group has someone who never loses and someone plotting revenge. Best of three always turns into best of seven.</p>
+</div>
+<div class="gg-card gg-reveal gg-pad" style="flex: 1 1 280px; min-width: 0; box-sizing: border-box; padding: 30px; border-radius: 22px; background: #ffffff; border: 2px solid #10241f; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 16px; color: #8a5a00">03</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.15">A place to belong</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #36504a">Not home, not school, not work. Somewhere to show up, meet people who like the same games, and trade recommendations over a cold drink.</p>
+</div>
+</div>
+
+<p class="gg-reveal" style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: clamp(18px, 2.4vw, 28px); line-height: 1.4; max-width: 920px">Games mix storytelling, music, art and competition in one place. The kids who grew up on them are now the ones making them, teaching with them and building careers around them.</p>
+</div>
+</div>
+
+<!-- LEVEL 3: FUTURE -->
+<div id="future" class="gg-sec" style="max-width: 1160px; margin: 0 auto; padding: 96px 20px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div class="gg-reveal" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ffb938">Level 03 · The future</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: clamp(28px, 4.6vw, 52px); line-height: 1.1; letter-spacing: -0.02em">Where gaming is headed.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #b8cbc2">Nobody knows exactly, but these are the things we keep an eye on. Tap one to read more.</p>
+</div>
+
+<div style="flex: 1.3 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="5">
+<div style="{{r.boxStyle}}">
+<button class="gg-acc" aria-expanded="{{r.open}}" onClick="{{r.pick}}" style="{{r.headStyle}}">
+<span style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 14px; color: #ffb938">{{r.num}}</span>
+<span style="flex: 1; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 18px; line-height: 1.25">{{r.title}}</span>
+<span style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px; color: #ffb938">{{r.sign}}</span>
+</button>
+<sc-if value="{{r.open}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 0 24px 24px; font-size: 17px; line-height: 1.7; color: #cddbd4">{{r.body}}</p>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+
+<!-- LEVEL 4: VISIT -->
+<div id="visit" class="gg-sec" style="max-width: 1160px; margin: 0 auto; padding: 24px 20px 96px">
+<div class="gg-reveal gg-pad" style="box-sizing: border-box; padding: 56px; border-radius: 32px; background: #ffb938; color: #1a1204; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 36px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 14px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75">Level 04 · Visit · Hojai, Assam</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: clamp(36px, 7vw, 84px); line-height: 1; letter-spacing: -0.03em">Come play.</h2>
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+<a class="gg-btn" href="mailto:srijon316@gmail.com?subject=Book%20a%20slot%20at%20Gaming%20Grid&amp;body=Hi%20Gaming%20Grid%2C%0A%0AI%27d%20like%20to%20book%20a%20slot.%0A%0AName%3A%20%0ADate%3A%20%0ATime%3A%20%0ASession%3A%201%20Player%20(%E2%82%B9100%2Fhr)%20or%202%20Players%20(%E2%82%B9180%2Fhr)%0AHours%3A%20%0A%0AThanks!" style="background: #1a1204; color: #f4f1e8; font-weight: 700; font-size: 17px; padding: 18px 30px; border-radius: 14px">Book your slot</a>
+<div style="font-size: 14px; font-weight: 600; opacity: 0.8">Opens an email with the details ready to fill in.</div>
+</div>
+</div>
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="box-sizing: border-box; padding: 22px 26px; border-radius: 18px; background: #1a1204; color: #f4f1e8; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ffb938">Open</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">10 AM – 10 PM</div>
+</div>
+<a class="gg-btn" href="mailto:srijon316@gmail.com" style="box-sizing: border-box; padding: 22px 26px; border-radius: 18px; background: #1a1204; color: #f4f1e8; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ffb938">Email</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 17px; line-height: 1.25; overflow-wrap: anywhere">srijon316@gmail.com</div>
+</a>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div style="max-width: 1160px; margin: 0 auto; padding: 26px 20px 44px; border-top: 1px solid rgba(244,241,232,0.14); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; color: #b8cbc2">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 16px; color: #f4f1e8">Gaming Grid · Hojai, Assam</div>
+<div>Prices in ₹ · Open 10 AM – 10 PM</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":3400}}'>
+class Component extends DCLogic {
+renderVals() {
+const items = [
+{ id: 0, num: '01', title: 'Cloud and streaming', body: 'Play big games without big hardware. The console moves into a data centre and your screen becomes a window onto it. How good it feels mostly depends on how fast your internet is.' },
+{ id: 1, num: '02', title: 'VR and mixed reality', body: 'Headsets keep getting lighter and cheaper. The promise is playing inside the game instead of looking at it, though comfort and price still hold a lot of people back.' },
+{ id: 2, num: '03', title: 'AI in games', body: 'Characters that react to what you actually say, worlds that shape themselves around how you play, and opponents that learn. The open question is keeping it feeling crafted rather than generic.' },
+{ id: 3, num: '04', title: 'Esports and creators', body: 'Competitive gaming keeps growing into a real career path, with leagues, coaches, streamers and creators. A lot of it starts with friends arguing about who is actually better.' },
+{ id: 4, num: '05', title: 'Still in the same room', body: 'However the technology changes, the best part probably will not: sitting next to the people you are playing with, and finding out in real time who just got outplayed.' }
+];
+const active = (this.state && this.state.active != null) ? this.state.active : 0;
+const rows = items.map((t) => {
+const on = t.id === active;
+return {
+num: t.num,
+title: t.title,
+body: t.body,
+open: on,
+sign: on ? '–' : '+',
+pick: () => this.setState({ active: on ? -1 : t.id }),
+boxStyle: 'border-radius:20px;overflow:hidden;background:' + (on ? '#1a3b33' : '#143029') + ';border:2px solid ' + (on ? '#ffb938' : 'rgba(244,241,232,0.14)') + ';',
+headStyle: 'display:flex;align-items:center;gap:16px;width:100%;box-sizing:border-box;padding:22px 24px;min-height:64px;text-align:left;background:transparent;border:0;color:#f4f1e8;'
+};
+});
+return { rows: rows };
+}
+}
+</script>
+</body>
+</html>
